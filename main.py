@@ -49,11 +49,14 @@ End_date = final_df.sort_values(by=['Epoch_Datetime'], ascending=False)
 #---replace boliena to number type in osf--
 final_df['osf'].replace({False: 0, True: 1}, inplace=True)
 
+started_time = Start_date.Epoch_Datetime.unique()
+End_time = End_date.Epoch_Datetime.unique()
+
 
 #---creating Api--
 st.title("Report")
-Select_Starting_date = st.selectbox('Select Start Date ?',Start_date.Epoch_Datetime.unique())
-Select_End_date = st.selectbox('Select End Date?',End_date.Epoch_Datetime.unique())
+Select_Starting_date = st.selectbox('Select Start Date ?',started_time)
+Select_End_date = st.selectbox('Select End Date?',End_time)
 
 
 #--- create report on basi on input time epoch--
